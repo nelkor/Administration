@@ -5,7 +5,7 @@ Administration Ubuntu like a baws
 
 vim /etc/ssh/sshd_config
 
-#Port 22 -> Port 1234
+"#Port 22" -> "Port 1234"
 
 ### Создание и настройка пользователя
 
