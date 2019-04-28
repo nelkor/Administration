@@ -9,7 +9,7 @@ vim /etc/ssh/sshd_config
 
 ### Создание и настройка пользователя
 
-useradd -m username
+useradd -m username  
 usermod -s /bin/bash username
 
 ### Выдать пользователю sudo
