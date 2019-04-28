@@ -12,7 +12,8 @@ service ssh restart
 ### Создание и настройка пользователя
 
 useradd -m username  
-usermod -s /bin/bash username
+usermod -s /bin/bash username  
+passwd username
 
 ### Выдать пользователю sudo
 
