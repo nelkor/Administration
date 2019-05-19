@@ -21,22 +21,22 @@ usermod -aG sudo username
 
 ### Пример конфига PHP-сокета
 
-[username]
+[username]  
 
-user = username
-group = username
+user = username  
+group = username  
 
-listen = /var/www/username/php7.2-fpm.sock
+listen = /var/www/username/php7.2-fpm.sock  
 
-listen.owner = www-data
-listen.group = www-data
+listen.owner = www-data  
+listen.group = www-data  
 
-pm = dynamic
+pm = dynamic  
 
-pm.max_children = 5
-pm.start_servers = 2
-pm.min_spare_servers = 1
-pm.max_spare_servers = 3
+pm.max_children = 5  
+pm.start_servers = 2  
+pm.min_spare_servers = 1  
+pm.max_spare_servers = 3  
 
 ### Пример конфига NGINX (простой)
 
