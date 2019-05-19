@@ -40,7 +40,7 @@ pm.max_spare_servers = 3
 
 ### Пример конфига NGINX (простой)
 
-server {
+server {  
     listen 80;
 
     server_name example.com;
