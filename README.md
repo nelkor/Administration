@@ -41,6 +41,7 @@ pm.max_spare_servers = 3
 ### Пример конфига NGINX (простой)
 
 server {  
+
     listen 80;  
 
     server_name example.com;  
@@ -72,6 +73,7 @@ server {
 ### Пример конфига NGINX (посложнее)
 
 server {  
+
     listen 80;  
 
     server_name example.com;  
@@ -89,14 +91,16 @@ server {
 }  
 
 server {  
+
     listen 80;  
     server_name www.example.com;  
     return 301 $scheme://example.com$request_uri;  
 }  
 
 server {  
-    listen 80;  
 
+    listen 80;  
+    
     server_name api.example.com;  
 
     root /var/www/username/api;  
