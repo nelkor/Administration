@@ -65,6 +65,7 @@ server {
 }  
 
 server {  
+
     listen 80;  
     server_name www.example.com;  
     return 301 $scheme://example.com$request_uri;  
