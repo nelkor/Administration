@@ -41,31 +41,31 @@ pm.max_spare_servers = 3
 ### Пример конфига NGINX (простой)
 
 server {  
-    listen 80;
+    listen 80;  
 
-    server_name example.com;
+    server_name example.com;  
 
-    root /var/www/username/www;
+    root /var/www/username/www;  
 
-    index index.php;
+    index index.php;  
 
-    error_log /var/www/username/log/error.log;
-    access_log /var/www/username/log/access.log;
+    error_log /var/www/username/log/error.log;  
+    access_log /var/www/username/log/access.log;  
 
-    location / {
-        try_files $uri $uri/ =404;
-    }
+    location / {  
+        try_files $uri $uri/ =404;  
+    }  
 
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
+    location ~ \.php$ {  
+        include snippets/fastcgi-php.conf;  
 
-        fastcgi_pass unix:/var/www/username/php7.2-fpm.sock;
-    }
-}
+        fastcgi_pass unix:/var/www/username/php7.2-fpm.sock;  
+    }  
+}  
 
-server {
-    listen 80;
-    server_name www.example.com;
-    return 301 $scheme://example.com$request_uri;
-}
+server {  
+    listen 80;  
+    server_name www.example.com;  
+    return 301 $scheme://example.com$request_uri;  
+}  
 
