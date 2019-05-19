@@ -72,42 +72,42 @@ server {
 ### Пример конфига NGINX (посложнее)
 
 server {  
-  listen 80;  
+    listen 80;  
 
-  server_name example.com;  
+    server_name example.com;  
 
-  root /var/www/username/www;  
+    root /var/www/username/www;  
 
-  index index.html;  
+    index index.html;  
 
-  error_log /var/www/username/log/www.error.log;  
-  access_log /var/www/username/log/www.access.log;  
+    error_log /var/www/username/log/www.error.log;  
+    access_log /var/www/username/log/www.access.log;  
 
-  location / {  
-    try_files $uri $uri/ /index.html;  
-  }  
+    location / {  
+      try_files $uri $uri/ /index.html;  
+    }  
 }  
 
 server {  
-  listen 80;  
-  server_name www.example.com;  
-  return 301 $scheme://example.com$request_uri;  
+    listen 80;  
+    server_name www.example.com;  
+    return 301 $scheme://example.com$request_uri;  
 }  
 
 server {  
-  listen 80;  
+    listen 80;  
 
-  server_name api.example.com;  
+    server_name api.example.com;  
 
-  root /var/www/username/api;  
+    root /var/www/username/api;  
 
-  error_log /var/www/username/log/api.error.log;  
-  access_log /var/www/username/log/api.access.log;  
+    error_log /var/www/username/log/api.error.log;  
+    access_log /var/www/username/log/api.access.log;  
 
-  location / {  
-    add_header Access-Control-Allow-Origin http://example.com;  
-    include fastcgi_params;  
-    fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;  
-    fastcgi_param SCRIPT_FILENAME $document_root/index.php;  
-  }  
+    location / {  
+      add_header Access-Control-Allow-Origin http://example.com;  
+      include fastcgi_params;  
+      fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;  
+      fastcgi_param SCRIPT_FILENAME $document_root/index.php;  
+    }  
 }  
