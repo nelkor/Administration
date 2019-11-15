@@ -7,7 +7,7 @@ vim /etc/ssh/sshd_config
 
 "#Port 22" -> "Port 1234"
 
-service ssh restart
+systemctl restart ssh
 
 ### Создание и настройка пользователя
 
