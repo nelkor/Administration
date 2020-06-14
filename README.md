@@ -116,3 +116,34 @@ server {
       fastcgi_param SCRIPT_FILENAME $document_root/index.php;  
     }  
 }  
+
+### Пример конфига NGINX (микрофронтенды)
+
+server {  
+
+    listen 443 ssl;  
+
+    server_name example.com;  
+
+    ssl_certificate /etc/nginx/ssl/example.com.cer;
+    ssl_certificate_key /etc/nginx/ssl/example.com.key;
+
+    root /var/www/domain;  
+
+    error_log /var/www/username/log/www.error.log;  
+    access_log /var/www/username/log/www.access.log;  
+
+    location ~ ^/news/. {
+      try_files $uri $uri/ /news/index.html;
+    }
+
+    location ~ ^/common/. {
+      try_files $uri $uri/ =404;
+    }
+
+    location / {  
+      root /var/www/domain/main;
+
+      try_files $uri $uri/ /index.html;
+    }  
+}  
