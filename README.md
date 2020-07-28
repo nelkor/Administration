@@ -150,53 +150,53 @@ server {
 
 ### Пример конфига NGINX (http + ws)
 
-server {
+server {  
 
-  listen 443 ssl;
+  listen 443 ssl;  
 
-  server_name nelkor.ru;
+  server_name nelkor.ru;  
 
-  ssl_certificate /etc/nginx/ssl/nelkor.ru.cer;
-  ssl_certificate_key /etc/nginx/ssl/nelkor.ru.key;
+  ssl_certificate /etc/nginx/ssl/nelkor.ru.cer;  
+  ssl_certificate_key /etc/nginx/ssl/nelkor.ru.key;  
 
-  root /var/www/artem/www;
+  root /var/www/artem/www;  
 
-  index index.html;
+  index index.html;  
 
-  error_log /var/www/artem/log/www.error.log;
-  access_log /var/www/artem/log/www.access.log;
+  error_log /var/www/artem/log/www.error.log;  
+  access_log /var/www/artem/log/www.access.log;  
 
-  location ~ ^/api/. {
-    proxy_pass http://localhost:3060;
-  }
+  location ~ ^/api/. {  
+    proxy_pass http://localhost:3060;  
+  }  
 
-  location ~ ^/realtime-connection {
-    proxy_pass http://localhost:3060;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-  }
+  location ~ ^/realtime-connection {  
+    proxy_pass http://localhost:3060;  
+    proxy_http_version 1.1;  
+    proxy_set_header Upgrade $http_upgrade;  
+    proxy_set_header Connection "upgrade";  
+  }  
 
-  location / {
-    try_files $uri $uri/ /index.html;
-  }
+  location / {  
+    try_files $uri $uri/ /index.html;  
+  }  
 
-}
+}  
 
-server {
-  listen 80;
-  server_name www.nelkor.ru;
-  return 301 https://nelkor.ru$request_uri;
-}
+server {  
+  listen 80;  
+  server_name www.nelkor.ru;  
+  return 301 https://nelkor.ru$request_uri;  
+}  
 
-server {
-  listen 80;
-  server_name nelkor.ru;
-  return 301 https://nelkor.ru$request_uri;
-}
+server {  
+  listen 80;  
+  server_name nelkor.ru;  
+  return 301 https://nelkor.ru$request_uri;  
+}  
 
-server {
-  listen 443 ssl;
-  server_name www.nelkor.ru;
-  return 301 https://nelkor.ru$request_uri;
-}
+server {  
+  listen 443 ssl;  
+  server_name www.nelkor.ru;  
+  return 301 https://nelkor.ru$request_uri;  
+}  
