@@ -152,7 +152,6 @@ server {
 
 ```
 server {  
-
   listen 443 ssl;  
 
   server_name nelkor.ru;  
@@ -181,7 +180,6 @@ server {
   location / {  
     try_files $uri $uri/ /index.html;  
   }  
-
 }  
 
 server {  
