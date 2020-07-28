@@ -150,6 +150,7 @@ server {
 
 ### Пример конфига NGINX (http + ws)
 
+```
 server {  
 
   listen 443 ssl;  
@@ -200,3 +201,4 @@ server {
   server_name www.nelkor.ru;  
   return 301 https://nelkor.ru$request_uri;  
 }  
+```
