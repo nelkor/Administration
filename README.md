@@ -3,7 +3,7 @@ Administration Ubuntu like a baws
 
 ### Windows docker switch
 
-bcdedit /set hypervisorlaunchtype auto
+bcdedit /set hypervisorlaunchtype auto  
 bcdedit /set hypervisorlaunchtype off
 
 ### Поменять порт SSH
