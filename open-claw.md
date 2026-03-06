@@ -58,6 +58,14 @@ https://github.com/nvm-sh/nvm
 apt install git -y
 ```
 
+Первоначальная настройка Git:
+
+```bash
+git config --global user.name "nelkor"
+git config --global user.email "nelkor@proton.me"
+git config --global pull.rebase true
+```
+
 Создать SSH ключи:
 
 ```bash
@@ -65,6 +73,12 @@ ssh-keygen -t ed25519
 ```
 
 Прокинуть *.pub-ключ в GitHub.
+
+Добавить https://github.com в "known hosts":
+
+```bash
+ssh -T git@github.com
+```
 
 Установить GitHub CLI:
 https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian
@@ -79,6 +93,51 @@ gh auth login
 
 ```bash
 npm i -g openclaw@latest
+```
+
+# Баг, который может быть исправлен в свежей версии 🔽
+
+Перед онбордингом надо подготовить Gateway Service.
+Скорее всего, проблема только при установке под `root`:
+
+Смотрим, где находится бинарник `openclaw`:
+
+```bash
+command -v openclaw
+```
+
+Например, `/root/.nvm/versions/node/v22.22.0/bin/openclaw`.
+Создаём файл `~/.config/systemd/user/openclaw-gateway.service`:
+
+```
+[Unit]
+Description=OpenClaw Gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/root/.nvm/versions/node/v22.22.0/bin/openclaw gateway run
+Restart=on-failure
+RestartSec=2
+WorkingDirectory=%h
+
+[Install]
+WantedBy=default.target
+```
+
+И активируем сервис:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user enable --now openclaw-gateway.service
+```
+
+# Если баг пофиксят, от этой секции можно избавиться.
+
+Теперь можно перейти к онбордингу:
+
+```bash
 openclaw onboard --install-daemon
 ```
 
