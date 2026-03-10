@@ -202,3 +202,28 @@ channels:
   telegram:
     groupPolicy: "disabled"
 ```
+
+## Heartbeat
+
+На текущий момент Heartbeat забагованный. Лучше отключить его:
+
+```
+openclaw config set agents.defaults.heartbeat.every "0m"
+```
+
+И установить `cron`:
+
+```bash
+openclaw cron add \
+  --name "hb-10m-internal" \
+  --cron "*/10 * * * *" \
+  --session isolated \
+  --message "Read HEARTBEAT.md in the workspace"
+```
+
+Крон-задачи можно проверять:
+
+```bash
+openclaw cron list
+openclaw cron runs --id <jobId> --limit 20
+```
