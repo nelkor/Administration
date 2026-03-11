@@ -227,3 +227,10 @@ openclaw cron add \
 openclaw cron list
 openclaw cron runs --id <jobId> --limit 20
 ```
+
+Установить oc-state:
+
+```bash
+mv oc-state.bash /usr/local/bin/oc-state
+chmod +x /usr/local/bin/oc-state
+```
