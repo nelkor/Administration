@@ -228,6 +228,51 @@ openclaw cron list
 openclaw cron runs --id <jobId> --limit 20
 ```
 
+Web Search:
+
+Добавить в `tools`: `"allow": ["web_search"],`, а также:
+
+```
+"web": {
+  "search": {
+    "provider": "perplexity",
+    "perplexity": {
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "model": "perplexity/sonar-pro"
+    }
+  }
+}
+```
+
+Google Chrome:
+
+```bash
+wget -O /tmp/google-chrome-stable_current_amd64.deb \
+  https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+sudo apt update
+sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb
+google-chrome-stable --version
+```
+
+В конфиге рядом с `agents`:
+
+```
+"browser": {
+  "headless": true,
+  "noSandbox": true,
+  "defaultProfile": "openclaw",
+  "executablePath": "/usr/bin/google-chrome-stable"
+},
+```
+
+Можно включать браузер, чтобы бот сразу его использовал.
+
+```bash
+openclaw browser --browser-profile openclaw start
+openclaw browser --browser-profile openclaw stop
+```
+
 Установить oc-state:
 
 ```bash
