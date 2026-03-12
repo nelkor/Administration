@@ -55,8 +55,7 @@ systemctl daemon-reload
 service ssh restart
 ```
 
-Установить NVM и Node:
-https://github.com/nvm-sh/nvm
+NVM больше не подходит. Ставим системный Nodejs.
 
 Установить Git:
 
@@ -101,7 +100,7 @@ gh auth login
 npm i -g openclaw@latest
 ```
 
-> Баг, который может быть исправлен в свежей версии 🔽
+> Этот баг уже исправлен 🔽
 
 Перед онбордингом надо подготовить Gateway Service.
 Скорее всего, проблема только при установке под `root`:
@@ -140,6 +139,8 @@ systemctl --user enable --now openclaw-gateway.service
 ```
 
 > Если баг пофиксят, от этой секции можно избавиться.
+
+В `.bashrc` Добавляем: `export OPENROUTER_API_KEY=sk-or-v1-42222222222222222`
 
 Теперь можно перейти к онбордингу:
 
