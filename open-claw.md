@@ -56,6 +56,7 @@ service ssh restart
 ```
 
 NVM больше не подходит. Ставим системный Nodejs.
+Добавить в APT: https://deb.nodesource.com
 
 Установить Git:
 
