@@ -57,6 +57,16 @@ sudo apt install -y lsof vim git && \
 sudo loginctl enable-linger openclaw
 ```
 
+Устанавливаем Google Chrome:
+
+```bash
+wget -O /tmp/google-chrome-stable_current_amd64.deb \
+https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+sudo apt update && \
+sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb && \
+google-chrome-stable --version
+```
+
 Устанавливаем ключ Open Router:
 
 ```bash
@@ -79,4 +89,53 @@ sudo service ssh restart && sudo reboot
 
 ```bash
 curl -fsSL https://openclaw.ai/install.sh | bash
+```
+
+## Нормализуем конфиг
+
+### Раздел "tools"
+
+Меняем "profile" на "full". Рядом с "profile" добавляем:
+
+```
+"web": {
+  "search": {
+    "provider": "perplexity",
+    "perplexity": {
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "model": "perplexity/sonar-pro"
+    }
+  }
+}
+```
+
+### Раздел "agents"
+
+Можно удалить лишнюю модель из "models". Рядом с "models" добавляем:
+
+```
+"memorySearch": {
+  "enabled": false
+}
+```
+## Раздел "channels"
+
+Устанавливаем `telegram.groupPolicy` в "disabled".
+
+## Раздел "browser"
+
+Добавляем раздел "browser":
+
+```
+"browser": {
+  "executablePath": "/usr/bin/google-chrome-stable",
+  "headless": true,
+  "defaultProfile": "openclaw"
+}
+```
+
+## Перезагружаем Gateway
+
+```bash
+openclaw gateway restart
 ```
