@@ -232,8 +232,6 @@ openclaw cron runs --id <jobId> --limit 20
 
 Web Search:
 
-Добавить в `tools`: `"allow": ["web_search"],`, а также:
-
 ```
 "web": {
   "search": {

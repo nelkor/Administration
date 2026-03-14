@@ -53,7 +53,6 @@ echo "set bell-style none" > ~/.inputrc
 
 ```bash
 sudo apt update && \
-sudo apt upgrade -y && \
 sudo apt install -y lsof vim git && \
 sudo loginctl enable-linger openclaw
 ```
@@ -61,7 +60,7 @@ sudo loginctl enable-linger openclaw
 Устанавливаем ключ Open Router:
 
 ```bash
-vim ~/.bashrc
+mkdir ~/.openclaw && vim ~/.openclaw/.env
 ```
 
 `export OPENROUTER_API_KEY=`
