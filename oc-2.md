@@ -128,9 +128,9 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 
 ```
 "browser": {
-  "executablePath": "/usr/bin/google-chrome-stable",
   "headless": true,
-  "defaultProfile": "openclaw"
+  "defaultProfile": "openclaw",
+  "executablePath": "/usr/bin/google-chrome-stable"
 }
 ```
 
