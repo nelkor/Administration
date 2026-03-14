@@ -116,13 +116,17 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 "memorySearch": {
   "enabled": false
+},
+"heartbeat": {
+  "every": "0m"
 }
 ```
-## Раздел "channels"
+
+### Раздел "channels"
 
 Устанавливаем `telegram.groupPolicy` в "disabled".
 
-## Раздел "browser"
+### Раздел "browser"
 
 Добавляем раздел "browser":
 
