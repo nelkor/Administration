@@ -53,7 +53,7 @@ echo "set bell-style none" > ~/.inputrc
 
 ```bash
 sudo apt update && \
-sudo apt install -y lsof vim git && \
+sudo apt install -y vim git lsof ffmpeg && \
 sudo loginctl enable-linger openclaw
 ```
 

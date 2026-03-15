@@ -217,10 +217,12 @@ openclaw config set agents.defaults.heartbeat.every "0m"
 
 ```bash
 openclaw cron add \
-  --name "hb-10m-internal" \
-  --cron "*/10 * * * *" \
+  --every 35m \
+  --no-deliver \
+  --light-context \
   --session isolated \
-  --message "Read HEARTBEAT.md in the workspace"
+  --name "hb-35m-internal" \
+  --message "Read HEARTBEAT.md and follow it strictly"
 ```
 
 Крон-задачи можно проверять:
