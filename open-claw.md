@@ -213,15 +213,16 @@ channels:
 openclaw config set agents.defaults.heartbeat.every "0m"
 ```
 
-И установить `cron`:
+И установить `cron` (User ID можно спросить у бота):
 
 ```bash
 openclaw cron add \
+  --announce \
   --every 35m \
-  --no-deliver \
   --light-context \
+  --to 1500000000 \
+  --name hb-35m-test \
   --session isolated \
-  --name "hb-35m-internal" \
   --message "Read HEARTBEAT.md and follow it strictly"
 ```
 
