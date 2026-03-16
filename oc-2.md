@@ -114,7 +114,7 @@ npm i -g openclaw@latest
 mkdir ~/.openclaw && vim ~/.openclaw/.env
 ```
 
-`export OPENROUTER_API_KEY=`
+`OPENROUTER_API_KEY=`
 
 Запускаем Wizard:
 
@@ -125,7 +125,7 @@ openclaw onboard --install-daemon
 ## Нормализуем конфиг
 
 ```bash
-vim .openclaw/openclaw.json
+vim ~/.openclaw/openclaw.json
 ```
 
 ### Раздел "tools"
@@ -175,6 +175,8 @@ vim .openclaw/openclaw.json
 
 ## Перезагружаем Gateway
 
+В интерактивном режиме, после проверки доктором.
+
 ```bash
-openclaw gateway restart
+openclaw doctor
 ```
