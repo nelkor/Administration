@@ -53,7 +53,7 @@ echo "set bell-style none" > ~/.inputrc
 
 ```bash
 sudo apt update && \
-sudo apt install -y vim git lsof ffmpeg && \
+sudo apt install -y vim git lsof ffmpeg build-essential && \
 sudo loginctl enable-linger openclaw
 ```
 
@@ -67,13 +67,13 @@ sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb && \
 google-chrome-stable --version
 ```
 
-Устанавливаем ключ Open Router:
+Обновляем приглашение в `~/.bashrc`:
 
 ```bash
-mkdir ~/.openclaw && vim ~/.openclaw/.env
+vim ~/.bashrc
 ```
 
-`export OPENROUTER_API_KEY=`
+Удаляем все блоки с `PS1=`, вместо них добавляем `PS1='\u@vds:\w\$ '`.
 
 Меняем порт SSH:
 
@@ -85,13 +85,48 @@ sudo vim /etc/ssh/sshd_config
 sudo service ssh restart && sudo reboot
 ```
 
+## Устанавливаем Node.js
+
+Добавляем свежую версию в APT из
+[NodeSource](https://nodesource.com/products/distributions).
+
+Остался нерешённым вопрос — не подхватился глобальный каталог NPM пользователя.
+Можно попробовать перезайти в систему и попрбовать `npm i -g npm`.
+Если "нет прав", то:
+
+```bash
+mkdir -p ~/.npm-global
+npm config set prefix ~/.npm-global
+echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc
+```
+
+И перезайти в систему.
+
 ## Устанавливаем Open Claw
 
 ```bash
-curl -fsSL https://openclaw.ai/install.sh | bash
+npm i -g openclaw@latest
+```
+
+Устанавливаем ключ Open Router:
+
+```bash
+mkdir ~/.openclaw && vim ~/.openclaw/.env
+```
+
+`export OPENROUTER_API_KEY=`
+
+Запускаем Wizard:
+
+```bash
+openclaw onboard --install-daemon
 ```
 
 ## Нормализуем конфиг
+
+```bash
+vim .openclaw/openclaw.json
+```
 
 ### Раздел "tools"
 
@@ -119,7 +154,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 },
 "heartbeat": {
   "every": "0m"
-}
+},
 ```
 
 ### Раздел "channels"
@@ -135,7 +170,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
   "headless": true,
   "defaultProfile": "openclaw",
   "executablePath": "/usr/bin/google-chrome-stable"
-}
+},
 ```
 
 ## Перезагружаем Gateway
