@@ -19,8 +19,8 @@ adduser openclaw
 Выдаём пользователю `openclaw` неограниченные sudo-права:
 
 ```bash
-usermod -aG sudo openclaw && \
-echo 'openclaw ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/openclaw && \
+usermod -aG sudo openclaw &&
+echo 'openclaw ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/openclaw &&
 chmod 440 /etc/sudoers.d/openclaw
 ```
 
@@ -52,8 +52,8 @@ echo "set bell-style none" > ~/.inputrc
 Устанавливаем полезные вещи:
 
 ```bash
-sudo apt update && \
-sudo apt install -y vim git lsof ffmpeg build-essential && \
+sudo apt update &&
+sudo apt install -y vim git lsof ffmpeg build-essential &&
 sudo loginctl enable-linger openclaw
 ```
 
@@ -61,9 +61,9 @@ sudo loginctl enable-linger openclaw
 
 ```bash
 wget -O /tmp/google-chrome-stable_current_amd64.deb \
-https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-sudo apt update && \
-sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb && \
+  https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &&
+sudo apt update &&
+sudo apt install -y /tmp/google-chrome-stable_current_amd64.deb &&
 google-chrome-stable --version
 ```
 
@@ -95,8 +95,8 @@ sudo service ssh restart && sudo reboot
 Если "нет прав", то:
 
 ```bash
-mkdir -p ~/.npm-global
-npm config set prefix ~/.npm-global
+mkdir -p ~/.npm-global &&
+npm config set prefix ~/.npm-global &&
 echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc
 ```
 
