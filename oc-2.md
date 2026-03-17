@@ -85,6 +85,12 @@ sudo vim /etc/ssh/sshd_config
 sudo service ssh restart && sudo reboot
 ```
 
+TODO. Файл подкачки:
+
+```bash
+swapon --show
+```
+
 ## Устанавливаем Node.js
 
 Добавляем свежую версию в APT из
@@ -179,4 +185,34 @@ vim ~/.openclaw/openclaw.json
 
 ```bash
 openclaw doctor
+```
+
+## Настраиваем пробуждения
+
+Вместо Heartbeat используем `cron`.
+Пока что не удалось найти способ заставить Heartbeat работать.
+
+Для параметра `--to` спрашиваем User ID у бота.
+
+```bash
+openclaw cron add \
+  --announce \
+  --every 35m \
+  --to 1500000000 \
+  --light-context \
+  --name hb-35m-test \
+  --session isolated \
+  --message "Read HEARTBEAT.md and follow it strictly"
+```
+
+Проверить задачи:
+
+```bash
+openclaw cron list
+```
+
+Удалить задачу:
+
+```bash
+openclaw cron remove task-id
 ```
