@@ -85,7 +85,7 @@ sudo vim /etc/ssh/sshd_config
 sudo service ssh restart && sudo reboot
 ```
 
-Файл подкачки:
+Проверяем файл подкачки (если его нет, надо создать):
 
 ```bash
 swapon --show
