@@ -85,10 +85,42 @@ sudo vim /etc/ssh/sshd_config
 sudo service ssh restart && sudo reboot
 ```
 
-TODO. Файл подкачки:
+Файл подкачки:
 
 ```bash
 swapon --show
+```
+
+## Настраиваем доступы в Git/GitHub
+
+Первоначальная настройка Git:
+
+```bash
+git config --global user.name "nelkor"
+git config --global user.email "nelkor@proton.me"
+git config --global pull.rebase true
+```
+
+Создаём SSH ключи:
+
+```bash
+ssh-keygen -t ed25519
+```
+
+Прокидываем *.pub-ключ в GitHub.
+Добавим github.com в "known hosts":
+
+```bash
+ssh -T git@github.com
+```
+
+Устанавливаем GitHub CLI:
+https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian
+
+Авторизуемся в GitHub CLI, выбираем HTTPS + Classic PAT:
+
+```bash
+gh auth login
 ```
 
 ## Устанавливаем Node.js
