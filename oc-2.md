@@ -229,10 +229,9 @@ openclaw doctor
 ```bash
 openclaw cron add \
   --announce \
+  --name work \
   --every 35m \
   --to 1500000000 \
-  --light-context \
-  --name hb-35m-test \
   --session isolated \
   --message "Follow the HEARTBEAT.md"
 ```
