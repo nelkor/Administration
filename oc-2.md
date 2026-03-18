@@ -234,7 +234,7 @@ openclaw cron add \
   --light-context \
   --name hb-35m-test \
   --session isolated \
-  --message "Read HEARTBEAT.md and follow it strictly"
+  --message "Follow the HEARTBEAT.md"
 ```
 
 Проверить задачи:
